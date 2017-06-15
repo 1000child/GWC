@@ -1,0 +1,62 @@
+from PIL import Image
+
+# For recoloring.
+burgundy = (40, 0, 11)
+purpleGray = (25,20,35)
+slateBlue = (72,61,150)
+red = (217, 26, 33)
+lightBlue = (112, 150, 158)
+lightPink = (255,182,193)
+plum = (221,160,221)
+yellow = (252, 227, 166)
+white = (255, 255, 255)
+
+
+print("Which image would you like to view through a filter? type 'animals-sea-contrast.jpg', 'lakeview.jpg', 'snowy-mt.jpg', or 'autumn-pond.jpg'")
+user_input = input()
+
+
+# Load the image and turn the image into a list of tuples.
+my_image = Image.open(user_input)
+image_list = my_image.getdata()
+image_list = list(image_list)
+
+
+# Check the intensity of each pixel, determine how to recolor it, and save it in a new list.
+recolored = []
+for pixel in image_list:
+
+    intensity = pixel[0] + pixel[1] + pixel[2]
+
+    if intensity < 59:
+        recolored.append(burgundy)
+
+    elif intensity >= 59 and intensity < 65:
+        recolored.append(purpleGray)
+
+    elif intensity >= 65 and intensity < 115:
+        recolored.append(slateBlue)
+
+    elif intensity >= 115 and intensity < 182:
+        recolored.append(white)
+
+    elif intensity >= 182 and intensity < 295:
+        recolored.append(red)
+
+    elif intensity >= 295 and intensity < 530:
+        recolored.append(lightBlue)
+
+    elif intensity >=530 and intensity < 595:
+        recolored.append(lightPink)
+
+    elif intensity >=595 and intensity < 620:
+        recolored.append(plum)    
+
+    elif intensity >=620 and intensity <=785:
+        recolored.append(yellow)
+
+# Create a new image using the recolored list. Display and save the image.
+new_image = Image.new("RGB", my_image.size)
+new_image.putdata(recolored)
+new_image.show()
+new_image.save("recolored.jpg", "jpeg")
