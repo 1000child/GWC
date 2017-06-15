@@ -10,13 +10,8 @@ count = 0
 user_input = input()
 if user_input == "yes":
     print("The door opened! Outside there is...")
-elif user_input == "no":
+while user_input == "no":
         print("You are still stuck in a room. Would you like to open the door?")
-        user_input = input()
-        if user_input == "yes":
-            print("The door opened!")
-        if not user_input == "yes":
-            print("You are still stuck in a room. Would you like to open the door?")
         user_input = input()
 
 print("""You are now outside. The door that was behind you is gone.
@@ -80,5 +75,6 @@ if user_input == "x":
     print("placeholder")
 if user_input == "y":
     print("placeholder")""")  
-    if user_input == "no":
+    while user_input == "no":
         print("There is nothing else in sight. Will you open the chest?")
+        user_input = input()
