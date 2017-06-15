@@ -1,0 +1,84 @@
+print("""You have been transported to a realm of magic and myth.
+Prepare to make choices that may help or hurt you in your quest
+for the skeleton code.""")
+
+print("""You are in a room. Would you like to open the door?
+yes or no: """)
+
+count = 0
+
+user_input = input()
+if user_input == "yes":
+    print("The door opened! Outside there is...")
+elif user_input == "no":
+        print("You are still stuck in a room. Would you like to open the door?")
+        user_input = input()
+        if user_input == "yes":
+            print("The door opened!")
+        if not user_input == "yes":
+            print("You are still stuck in a room. Would you like to open the door?")
+        user_input = input()
+
+print("""You are now outside. The door that was behind you is gone.
+Suddenly a giant angry bunny appears in front of you!!!""")
+print("""Will you try to escape or will you fight the angry bunny?
+type 'escape' or 'fight'""")
+
+user_input = input()
+if user_input == "escape":
+    print("Oh no! The angry bunny is too fast. You cannot escape.")
+elif user_input == "fight":
+    print("""The angry bunny dives for your throat;
+you barely manage to dive out of the way.""")
+
+
+print("""You see a sword and a gun hidden in the grass beside you.
+Which will you pick up? type 'sword' or 'gun' """)
+
+user_input = input()
+if user_input == "sword":
+    print("""You pick up the sword. You slash with the sword
+and land a fatal hit on the angry bunny.""")
+elif user_input == "gun":
+    print("""You have obtained the gun! Will you pull the trigger?
+type 'yes' or 'no' """)
+    user_input = input()
+    if user_input == "yes":
+        print("The angry bunny is dead.")
+    elif user_input == "no":
+        print("""Too late! Your fingers clenched in fear. The angry bunny is dead.""")
+
+
+print("""The angry bunny's remains are slowly dissapearing.
+In its place is a closed chest""")
+
+print("Will you open the chest? yes or no ")
+user_input = input()
+if user_input == "yes":
+    print("""CONGRATULATIONS! You have found the skeleton code.
+          Run again to restart the game.""")
+    print("""skeleton code:
+
+print("placeholder; choose x or y ")
+
+user_input = input()
+if user_input == "x":
+    print("placeholder")
+if user_input == "y":
+    print("placeholder")""")  
+if user_input == "no":
+    print("There is nothing else in sight. Will you open the chest?")
+    if user_input == "yes":
+        print("""CONGRATULATIONS! You have found the skeleton code.
+          Run again to restart the game.""")
+        print("""skeleton code:
+
+print("placeholder; choose x or y ")
+
+user_input = input()
+if user_input == "x":
+    print("placeholder")
+if user_input == "y":
+    print("placeholder")""")  
+    if user_input == "no":
+        print("There is nothing else in sight. Will you open the chest?")
