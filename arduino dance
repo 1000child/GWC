@@ -1,0 +1,111 @@
+//song: Redemption Song by Bob Marley
+
+#include <Servo.h>  
+Servo servoRight; 
+Servo servoLeft; 
+
+int led = 9;           // the PWM pin the LED is attached to
+int brightness = 0;    // how bright the LED is
+int fadeAmount = 5;    // how many points to fade the LED by
+
+void setup() {
+  // declare pin 9 to be an output:
+  pinMode(led, OUTPUT);
+  // put your setup code here, to run once:     
+  servoLeft.attach(13);  
+  servoRight.attach(12);  
+  
+}  
+  void Backward() {
+  servoLeft.writeMicroseconds(1300);
+  servoRight.writeMicroseconds(1700);  
+}
+  void rightMove() {
+  servoLeft.writeMicroseconds(1500);
+  servoRight.writeMicroseconds(1250); 
+}
+
+void leftMove() {
+  servoLeft.writeMicroseconds(1750);
+  servoRight.writeMicroseconds(1500);
+}   
+
+void Forward(){
+  servoLeft.writeMicroseconds(1700);
+  servoRight.writeMicroseconds(1300); 
+}
+
+void rotateLeft(){
+   servoLeft.writeMicroseconds(1300);   // Left wheel clockwise
+   servoRight.writeMicroseconds(1300);  // Right wheel clockwise
+}
+
+void rotateRight(){
+   servoLeft.writeMicroseconds(1700);   // Left wheel counterclockwise
+   servoRight.writeMicroseconds(1700); // Right wheel counterclockwise
+}
+
+void loop() {
+
+ // set the brightness of pin 9:
+  analogWrite(led, brightness);
+
+  // change the brightness for next time through the loop:
+  brightness = brightness + fadeAmount;
+
+  // reverse the direction of the fading at the ends of the fade:
+  if (brightness == 0 || brightness == 255) {
+    fadeAmount = -fadeAmount ;
+  }
+  // wait for 30 milliseconds to see the dimming effect
+  delay(30);
+
+for (int x = 0; x < 2; x++) {
+  delay(19000);
+  Forward();
+  delay(1000);
+  Backward();
+  delay(1000);
+  leftMove();
+  delay(1000);
+  rightMove();
+  delay(1500);
+  
+  Forward();
+  delay(1000);
+  Backward();
+  delay(1000);
+  leftMove();
+  delay(1000);
+  rightMove();
+  delay(1500);
+
+  Forward();
+  delay(1000);
+  Backward();
+  delay(1000);
+  leftMove();
+  delay(1000);
+  rightMove();
+  delay(1500);
+
+  Forward();
+  delay(1000);
+  Backward();
+  delay(1000);
+  leftMove();
+  delay(1000);
+  rightMove();
+  delay(1500);
+  
+  rotateLeft();
+  rotateLeft();
+  rotateLeft();
+  delay(15000);
+  rotateRight();
+  rotateRight();
+  rotateRight();
+
+  
+}
+}
