@@ -1,0 +1,85 @@
+//6.23.2017 Chrisitine, Kenyetta, Kaleigh, Brynn, Amya
+ /* Robotics with the BOE Shield - DisplayWhiskerStates
+ * Display left and right whisker states in Serial Monitor.
+ * 1 indicates no contact; 0 indicates contact.
+ */
+
+#include <Servo.h>  
+
+Servo servoLeft;   
+Servo servoRight; 
+
+
+
+int reading=0;
+int photoTran=13;    // The phototransistor is connected to digital pin 13
+
+
+void setup()                                 // Built-in initialization block
+{        
+  pinMode(photoTran,INPUT);                      
+  pinMode(7, INPUT);                         // Set RIGHT whisker pin to input
+  pinMode(5, INPUT);                         // Set LEFT whisker pin to input  
+
+  servoLeft.attach(13);                
+  servoRight.attach(12);    
+  Serial.begin(9600);                        // Set data rate to 9600 bps
+}  
+
+  void moveForward(){
+    servoLeft.writeMicroseconds(1700);         
+    servoRight.writeMicroseconds(1300);        
+  } 
+  void moveBackward() {
+    servoLeft.writeMicroseconds(1300);
+    servoRight.writeMicroseconds(1700);  
+}
+  void rotateLeft(){
+    servoLeft.writeMicroseconds(1300);         // Turns left
+    servoRight.writeMicroseconds(1300);        
+  }
+
+  void rotateRight(){
+    servoLeft.writeMicroseconds(1700);   // Left wheel counterclockwise
+    servoRight.writeMicroseconds(1700); // Right wheel counterclockwise
+  }
+
+ 
+void loop()                                  // Main loop auto-repeats
+{    
+   
+  byte wLeft = digitalRead(5);               // Copy left result to wLeft  
+  byte wRight = digitalRead(7);              // Copy right result to wRight
+  
+  Serial.print(wLeft);                       // Display left whisker state
+  Serial.println(wRight);                    // Display right whisker state
+
+                                             // Pause for 50 ms
+
+  reading = analogRead(photoTran);
+  Serial.println(reading);
+  
+  moveBackward();      
+
+  if (wLeft==0){
+    moveForward(); 
+    delay(1000);
+    rotateLeft();
+    delay(500);   
+    } 
+
+  if(wRight==0){
+    moveForward();
+    delay(1000);
+    rotateRight();  
+    delay(500);
+    }
+
+  if (reading<25){
+    rotateLeft();  
+    delay(500);
+    moveForward();
+    delay(500);
+  }
+
+} 
